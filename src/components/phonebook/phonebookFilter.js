@@ -11,7 +11,7 @@ export default function PhonebookFilter({ filter }) {
   };
 
   return (
-    <form className="phonebook__form">
+    <form>
       <label htmlFor={filterId}>Find contacts by name</label>
       <input
         autoComplete="off"
@@ -20,7 +20,6 @@ export default function PhonebookFilter({ filter }) {
         type="text"
         name="filter"
         onChange={filterChange}
-        className="input-phonebook"
       />
     </form>
   );

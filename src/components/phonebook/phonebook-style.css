@@ -23,6 +23,7 @@ button:hover {
 .delete-btn {
     width: 60px;
     padding: 0;
+    height: 30px;
 }
 ul {
     list-style: none;
@@ -39,4 +40,8 @@ ul {
 .search {
     display: flex;
     margin-left: 15px;
+}
+.contact-list {
+    display: flex;
+    align-items: center;
 }

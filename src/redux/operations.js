@@ -1,5 +1,4 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import Notiflix from 'notiflix';
 import { instanceContacts } from 'services/api';
 
 const isDublicate = ({ name }, contacts) => {
@@ -42,15 +41,6 @@ export const addContact = createAsyncThunk(
   async (data, { rejectWithValue }) => {
     try {
       const result = await addContacts(data);
-      Notiflix.Report.success('Super !', ` New contact added!`, 'Close', {
-        svgSize: '200px',
-        titleFontSize: '24px',
-        messageFontSize: '20px',
-        buttonFontSize: '16px',
-        width: '300px',
-        backOverlay: true,
-        backOverlayClickToClose: true,
-      });
       return result;
     } catch (e) {
       return rejectWithValue(e);
@@ -60,20 +50,7 @@ export const addContact = createAsyncThunk(
     condition: (data, { getState }) => {
       const { contacts } = getState();
       if (isDublicate(data, contacts.items)) {
-        return Notiflix.Report.warning(
-          'Oopps...',
-          `${contacts.name} already exists 🤪 Try entering the full name.`,
-          'Close',
-          {
-            svgSize: '200px',
-            titleFontSize: '24px',
-            messageFontSize: '18px',
-            buttonFontSize: '16px',
-            width: '300px',
-            backOverlay: true,
-            backOverlayClickToClose: true,
-          }
-        );
+        return alert('The contact already exists');
       }
     },
   }
